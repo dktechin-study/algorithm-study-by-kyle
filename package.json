@@ -1,0 +1,32 @@
+{
+  "name": "algorithm-study-by-kyle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test:live",
+    "start": "npm run build:test",
+    "build:live": "nodemon --exec tsc ./**/**.ts",
+    "test:live" : "nodemon --exec jasmine-ts -- ./**/**.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dktechin-study/algorithm-study-by-kyle.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dktechin-study/algorithm-study-by-kyle/issues"
+  },
+  "homepage": "https://github.com/dktechin-study/algorithm-study-by-kyle#readme",
+  "devDependencies": {
+    "@types/jasmine": "^2.5.41",
+    "@types/node": "^7.0.2",
+    "jasmine-spec-reporter": "^3.2.0",
+    "jasmine-ts": "0.0.3",
+    "nodemon": "^1.11.0",
+    "ts-node": "^2.0.0",
+    "typescript": "^2.1.5"
+  }
+}
