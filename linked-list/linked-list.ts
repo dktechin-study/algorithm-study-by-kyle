@@ -15,8 +15,8 @@ export class LinkedList <T> {
   
   private getNode (index : number) : Node<T> {
     let node : Node<T> = this.head;
-    if (this.checkOutOfBounce(index)) node = new Node(null);
-    else for (let i = 0; i < index; i++) node = node.next;
+    if ( this.checkOutOfBounce(index) ) node = new Node(null);
+    else for ( let i = 0; i < index; i++ ) node = node.next;
     return node;
   }
   
@@ -30,8 +30,8 @@ export class LinkedList <T> {
   
   push (value : T) : T {
     let node = new Node(value);
-    if (this._length === 0) this.head = node;
-    else if (this._length === 1) this.head.next = node;
+    if ( this._length === 0 ) this.head = node;
+    else if ( this._length === 1 ) this.head.next = node;
     else this.getNode(this.length - 1).next = node;
     this._length += 1;
     return node.value;
@@ -40,16 +40,16 @@ export class LinkedList <T> {
   toString () {
     let node : Node<T> = this.head;
     console.log('\n >> Print Node');
-    for (let i = 0; i < this.length; i++) {
+    for ( let i = 0; i < this.length; i++ ) {
       let next = node.next;
-      if (next !== null) node = next;
+      if ( next !== null ) node = next;
     }
   }
   
-  insert ( value : T, index : number) : T {
-    if (this.checkOutOfBounce(index)) throw new Error('index out of bounce.');
+  insert (value : T, index : number) : T {
+    if ( this.checkOutOfBounce(index) ) throw new Error('index out of bounce.');
     let node = new Node(value);
-    if (index === 0) {
+    if ( index === 0 ) {
       let head = this.head;
       this.head = node;
       this.head.next = head;
@@ -65,14 +65,19 @@ export class LinkedList <T> {
   }
   
   remove (index : number) : void {
-    if (index < 0 || index > this.length - 1) throw new Error('index out of bounce.');
-    if (index === 0) {
+    if ( index < 0 || index > this.length - 1 ) throw new Error('index out of bounce.');
+    if ( index === 0 ) {
       this.head = this.head.next;
     } else {
       let prevNode = this.getNode(index - 1);
       let nextNode = this.getNode(index + 1);
       nextNode ? prevNode.next = nextNode : prevNode.next = new Node(null);
     }
+    this._length -= 1;
+  }
+  
+  pop () : void {
+    this.getNode(this.length - 2).next = new Node(null);
     this._length -= 1;
   }
 }

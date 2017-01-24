@@ -56,4 +56,13 @@ describe('Linked List for jasmine', function () {
     linkedList.toString();
   });
   
+  it("should pop", function () {
+    let linkedList:LinkedList<number> = new LinkedList<number>(0, 1, 2, 3, 4, 5);
+    // length = 6
+    linkedList.pop();
+    expect(linkedList.length).toEqual(5);
+    linkedList.pop();
+    expect(linkedList.get(4)).toEqual(null);
+    expect(linkedList.length).toEqual(4);
+  });
 });
