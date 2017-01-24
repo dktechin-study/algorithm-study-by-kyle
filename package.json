@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test:live",
-    "start": "npm run build:test",
+    "test": "jasmine-ts",
+    "start": "npm run test:live",
     "build:live": "nodemon --exec tsc ./**/**.ts",
     "test:live" : "nodemon --exec jasmine-ts -- ./**/**.ts"
   },

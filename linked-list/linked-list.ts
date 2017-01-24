@@ -1,4 +1,5 @@
 import { Node } from "./node";
+
 export class LinkedList <T> {
   
   private head : Node<T> = new Node(null);
