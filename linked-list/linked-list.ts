@@ -11,11 +11,12 @@ export class LinkedList <T> {
   
   get (idx : number) : T {
     let node : Node<T> = this.head;
-    Array(idx).forEach(i => node = node.next);
+    if (idx > this.length || idx < 0) node = null;
+    else for (let i = 0; i < idx; i++) node = node.next;
     return node.value;
   }
   
-  push (value : T) {
+  push (value : T) : T {
     let node = new Node(value);
     let tail = this.tail;
     
@@ -23,6 +24,12 @@ export class LinkedList <T> {
     else if (this.length === 1) this.head.next = this.tail = node;
     else tail.next = this.tail = node;
     this.length ++;
-    return this;
+    return node.value;
+  }
+  
+  insert ( value : T, index? : number) : T {
+    // if (isNaN(index)) return this.get(this.length - 1);
+    // else
+    return this.push(value);
   }
 }
