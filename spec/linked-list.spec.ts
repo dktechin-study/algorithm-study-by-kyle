@@ -40,6 +40,19 @@ describe('Linked List for jasmine', function () {
     expect(linkedList.length).toEqual(5);
     
     expect(() => linkedList.insert(100, 100)).toThrow(new Error('index out of bounce.'));
+  });
+  
+  it("should removed", function () {
+    let linkedList:LinkedList<number> = new LinkedList<number>(0, 1, 2, 3, 4, 5);
+    // length = 6
+    expect(() => linkedList.remove(6)).toThrow(new Error('index out of bounce.'));
+    linkedList.remove(5);
+    expect(linkedList.length).toEqual(5);
+    expect(linkedList.get(5)).toEqual(null);
+  
+    linkedList.remove(2);
+    expect(linkedList.get(2)).toEqual(3);
+    
     linkedList.toString();
   });
   

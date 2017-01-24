@@ -8,19 +8,19 @@ export class LinkedList <T> {
     values.forEach(value => this.push(value));
   }
   
-  checkOutOfBounce (idx : number) : boolean {
-    return idx > this._length || idx < 0
+  checkOutOfBounce (index : number) : boolean {
+    return index > this._length || index < 0
   }
   
-  private getNode (idx : number) : Node<T> {
+  private getNode (index : number) : Node<T> {
     let node : Node<T> = this.head;
-    if (this.checkOutOfBounce(idx)) node = new Node(null);
-    else for (let i = 0; i < idx; i++) node = node.next;
+    if (this.checkOutOfBounce(index)) node = new Node(null);
+    else for (let i = 0; i < index; i++) node = node.next;
     return node;
   }
   
-  get (idx : number) : T {
-    return this.getNode(idx).value;
+  get (index : number) : T {
+    return this.getNode(index).value;
   }
   
   get length () : number {
@@ -46,7 +46,7 @@ export class LinkedList <T> {
   }
   
   insert ( value : T, index : number) : T {
-    if (index < 0 || index > this._length) throw new Error('index out of bounce.');
+    if (this.checkOutOfBounce(index)) throw new Error('index out of bounce.');
     let node = new Node(value);
     if (index === 0) {
       let head = this.head;
@@ -61,5 +61,17 @@ export class LinkedList <T> {
     
     this._length += 1;
     return node.value;
+  }
+  
+  remove (index : number) : void {
+    if (index < 0 || index > this.length - 1) throw new Error('index out of bounce.');
+    if (index === 0) {
+      this.head = this.head.next;
+    } else {
+      let prevNode = this.getNode(index - 1);
+      let nextNode = this.getNode(index + 1);
+      nextNode ? prevNode.next = nextNode : prevNode.next = new Node(null);
+    }
+    this._length -= 1;
   }
 }
