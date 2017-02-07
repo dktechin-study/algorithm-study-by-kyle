@@ -1,4 +1,5 @@
 import { Node } from "./node";
+import {} from 'fs';
 
 export class LinkedList <T> {
   
